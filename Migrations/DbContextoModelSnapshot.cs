@@ -44,19 +44,22 @@ namespace apresentacao.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("cidade");
 
-                    b.Property<int>("Cpf")
-                        .HasMaxLength(8)
-                        .HasColumnType("int")
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasMaxLength(14)
+                        .HasColumnType("varchar(14)")
                         .HasColumnName("cpf");
 
-                    b.Property<int>("Dtanascimento")
-                        .HasMaxLength(8)
-                        .HasColumnType("int")
+                    b.Property<string>("Dtanascimento")
+                        .IsRequired()
+                        .HasMaxLength(14)
+                        .HasColumnType("varchar(14)")
                         .HasColumnName("dtnascimento");
 
-                    b.Property<int>("Email")
+                    b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("int")
+                        .HasColumnType("nvarchar(100)")
                         .HasColumnName("email");
 
                     b.Property<string>("Estado")
@@ -67,7 +70,7 @@ namespace apresentacao.Migrations
 
                     b.Property<string>("Estadocivil")
                         .IsRequired()
-                        .HasColumnType("varchar(64)")
+                        .HasColumnType("varchar")
                         .HasColumnName("estadocivil");
 
                     b.Property<string>("Logadouro")
@@ -82,48 +85,56 @@ namespace apresentacao.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("nome");
 
-                    b.Property<string>("Nomecontato")
+                    b.Property<string>("Numero")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)")
-                        .HasColumnName("nomecontato");
-
-                    b.Property<int>("Numero")
                         .HasMaxLength(10)
-                        .HasColumnType("int")
+                        .HasColumnType("varchar(10)")
                         .HasColumnName("numero");
 
-                    b.Property<int>("Profissao")
+                    b.Property<int>("VagaId")
                         .HasColumnType("int")
                         .HasColumnName("id_profissao");
 
-                    b.Property<int>("telcontato")
-                        .HasMaxLength(12)
-                        .HasColumnType("int")
+                    b.Property<string>("telcontato")
+                        .IsRequired()
+                        .HasColumnType("varchar")
                         .HasColumnName("telcontato");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("VagaId");
+
                     b.ToTable("candidatos");
                 });
 
-            modelBuilder.Entity("apresentacao.Models.Profissao", b =>
+            modelBuilder.Entity("apresentacao.Models.Vaga", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("profissao_id")
+                        .HasColumnName("vaga_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Vaga")
+                    b.Property<string>("Cargo")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("vaga");
+                        .HasColumnName("cargo");
 
                     b.HasKey("Id");
 
-                    b.ToTable("profissoes");
+                    b.ToTable("vagas");
+                });
+
+            modelBuilder.Entity("apresentacao.Models.Candidato", b =>
+                {
+                    b.HasOne("apresentacao.Models.Vaga", "Vaga")
+                        .WithMany()
+                        .HasForeignKey("VagaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Vaga");
                 });
 #pragma warning restore 612, 618
         }

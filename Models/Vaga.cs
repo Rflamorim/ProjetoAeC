@@ -9,21 +9,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace apresentacao.Models
-
 {
 
-
-[Table("profissoes")]
-  public class Profissao
+  [Table("vagas")]
+  public class Vaga
   {
     
-    [Column("profissao_id")]
+    [Key]
+    [Column("vaga_id")]
     public int Id { get;set; }
 
-    [Column("vaga", TypeName = "varchar")]
+    [Column("cargo", TypeName = "varchar")]
     [MaxLength(50)]
     [Required]
-    public string Vaga { get;set; }
+    public string Cargo { get;set; }
 
   
     

@@ -25,6 +25,7 @@
   dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 5.0.2
   dotnet add package Pomelo.EntityFrameworkCore.MySql --version 5.0.1
   dotnet add package NuGet.Frameworks --version 5.11.0
+  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 5.0.2
 ```
 
 # Comandos para migração:
@@ -39,11 +40,13 @@ dotnet ef database update
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-# Gerando o scaffold de Carros
+# Gerando o scaffold de Candidato
 ``` bash
 dotnet aspnet-codegenerator controller -name CandidatosController -m Candidato -dc DbContexto --relativeFolderPath Controllers
 
 dotnet aspnet-codegenerator controller -name ProfissoesController -m Profissao -dc DbContexto --relativeFolderPath Controllers
+
+dotnet aspnet-codegenerator controller -name ClientesController -m Candidatos -dc DbContexto --relativeFolderPath Controllers --useDefaultLayout
 
 ```
 /* https://www.youtube.com/watch?v=_jdsAOGiiC8&ab_channel=VictorLima-GuiadoProgramador */

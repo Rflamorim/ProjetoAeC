@@ -13,76 +13,74 @@ namespace apresentacao.Models
     [Column ("id")]
     public int Id { get;set; }
 
-    [Column("nome", TypeName = "varchar")]
+    [Column("nome", TypeName = "nvarchar")]
     [MaxLength(100)]
     [Required]
-    public int Nome { get;set; }
+    public string Nome { get;set; }
      
 
-    [Column("cpf", TypeName = "int")]
-    [MaxLength(8)]
-    public int Cpf { get;set; }
-
-    [Column("dtnascimento", TypeName = "int")]
-    [MaxLength(8)]
+    [Column("cpf", TypeName = "nvarchar")]
+    [MaxLength(14)]
     [Required]
-    public int Dtanascimento { get;set; }
+    public string Cpf { get;set; }
 
-    [Column ("estadocivil", TypeName = "varchar")]
+    [Column("dtnascimento", TypeName = "nvarchar")]
+    [MaxLength(14)]
     [Required]
-    public int Estadocivil { get;set; }
+    public string Dtanascimento { get;set; }
+
+    [Column ("estadocivil", TypeName = "nvarchar")]
+    [Required]
+    public string Estadocivil { get;set; }
     
     [Column("email")]
     [MaxLength(100)]
     [Required]
-    public int Email { get; set; }
+    public string Email { get; set; }
 
-    [Column("cep", TypeName = "varchar")]
+    [Column("cep", TypeName = "nvarchar")]
     [MaxLength(10)]
-    [Required]
-    public int Cep { get;set; }
+    [Required]    
+    public string Cep { get;set; }
 
-    [Column("logadouro", TypeName = "varchar")]
+    [Column("logadouro", TypeName = "nvarchar")]
     [MaxLength(50)]
     [Required]    
     public string Logadouro { get;set; }
 
-    [Column("numero")]
-    [Required]
+    [Column("numero", TypeName = "nvarchar")]
     [MaxLength(10)]
-    public int Numero { get; set; }
+    [Required]
+    public string Numero { get; set; }
 
-    [Column("bairro", TypeName = "varchar")]
+    [Column("bairro", TypeName = "nvarchar")]
     [MaxLength(50)]
     [Required]
     public string Bairro { get; set; }
 
-    [Column("cidade", TypeName = "varchar")]
+    [Column("cidade", TypeName = "nvarchar")]
     [MaxLength(50)]
     [Required]
     public string Cidade { get;set; }
 
     
-    [Column("estado", TypeName = "varchar")]
+    [Column("estado", TypeName = "nvarchar")]
     [MaxLength(10)]
     [Required]
     public string Estado { get;set; }
 
-    [Column("telcontato", TypeName = "int")]
-    [MaxLength(12)]
+    [Column("telcontato", TypeName = "nvarchar")]
     [Required]
-    public int telcontato { get;set; }
-
-    [Column("nomecontato", TypeName = "varchar")]
-    [MaxLength(20)]
-    [Required]
-    public int Nomecontato { get;set; }
+    public string telcontato { get;set; }
 
     [Column("id_profissao")]
     [Required]
-    [ForeignKey ("profissao_id")]
-    
-    public int Profissao { get;set; }
+    [ForeignKey ("vaga_id")]
+    [JsonPropertyName("id_profissao")]
+    public int VagaId { get;set; }
+
+    [JsonIgnore]
+    public Vaga Vaga { get; set; }
 
     
   }
