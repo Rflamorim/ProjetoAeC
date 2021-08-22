@@ -49,5 +49,6 @@ dotnet aspnet-codegenerator controller -name ProfissoesController -m Profissao -
 dotnet aspnet-codegenerator controller -name ClientesController -m Candidatos -dc DbContexto --relativeFolderPath Controllers --useDefaultLayout
 
 ```
-/* https://www.youtube.com/watch?v=_jdsAOGiiC8&ab_channel=VictorLima-GuiadoProgramador */
+/* https://www.torneseumprogramador.com.br/*/
+``````````
 
