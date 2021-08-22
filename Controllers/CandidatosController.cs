@@ -104,9 +104,10 @@ namespace apresentacao.Controller
             }
         }
 
-        private ActionResult<Candidato> TextResult(string v)
+             
+        private ActionResult<Candidato> TextResult(string v) 
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException  ();
         }
 
         // DELETE: api/Candidatos/5

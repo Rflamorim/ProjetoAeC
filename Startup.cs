@@ -50,9 +50,15 @@ namespace apresentacao
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "apresentacao v1"));
             }
 
-            app.UseHttpsRedirection();
+           app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseAuthorization();
 

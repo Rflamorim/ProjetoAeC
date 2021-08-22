@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ProjetoAeC_main;
 
 namespace ProjetoAeC_main.Apresentacao
 {
@@ -6,7 +7,7 @@ namespace ProjetoAeC_main.Apresentacao
     {
         public string Mensagem
         {
-            get{ return "dadhjahd vindo a minha API";}
+            get{ return "Bemvindo a minha API";}
         }
         public List<string> Endpoints
         {
@@ -14,7 +15,7 @@ namespace ProjetoAeC_main.Apresentacao
             { 
                 return new List<string>() 
              {
-                "/vagas",
+                "/Profissoes",
                 "/candidatos",
                 "/swagger"
              };

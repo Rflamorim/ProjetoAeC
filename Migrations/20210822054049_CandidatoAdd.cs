@@ -10,7 +10,7 @@ namespace apresentacao.Migrations
                 name: "vagas",
                 columns: table => new
                 {
-                    vaga_id = table.Column<int>(type: "int", nullable: false)
+                    vaga_id = table.Column<string>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     cargo = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
